@@ -1,22 +1,23 @@
 package tech.elicase.minecraftosc.platform.forge;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import tech.elicase.minecraftosc.core.platform.ChatBroadcaster;
 
+import java.util.Objects;
+
 /**
- * Forge 聊天广播实现
+ * Forge 客户端聊天发送实现
  */
 public final class ForgeChatBroadcaster implements ChatBroadcaster {
 
-    private final MinecraftServer server;
+    private final ClientPacketListener connection;
 
-    public ForgeChatBroadcaster(MinecraftServer server) {
-        this.server = server;
+    public ForgeChatBroadcaster(ClientPacketListener connection) {
+        this.connection = Objects.requireNonNull(connection, "connection");
     }
 
     @Override
     public void broadcast(String message) {
-        server.getPlayerList().broadcastSystemMessage(Component.literal(message), false);
+        connection.sendChat(message);
     }
 }

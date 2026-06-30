@@ -1,9 +1,9 @@
 package tech.elicase.minecraftosc.platform.forge;
 
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.slf4j.Logger;
 import tech.elicase.minecraftosc.core.config.ConfigManager;
@@ -15,14 +15,13 @@ import java.net.SocketException;
 /**
  * Forge 生命周期适配器
  */
-public final class ForgeAdapter {
+public final class ForgeAdapter implements ReloadableAdapter {
 
     private final ConfigManager configManager;
     private final Logger logger;
 
     private MinecraftOscService oscService;
-    private MinecraftServer server;
-    private long serverTick;
+    private long clientTick;
 
     public ForgeAdapter(ConfigManager configManager, Logger logger) {
         this.configManager = configManager;
@@ -43,27 +42,31 @@ public final class ForgeAdapter {
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        server = event.getServer();
+    public void onClientLoggingIn(ClientPlayerNetworkEvent.LoggingIn event) {
         startService();
     }
 
     @SubscribeEvent
-    public void onServerStopping(ServerStoppingEvent event) {
+    public void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
         stopService();
-        server = null;
     }
 
     @SubscribeEvent
-    public void onServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || oscService == null || server == null) {
+    public void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || oscService == null) {
             return;
         }
 
-        serverTick++;
-        oscService.releaseReadyRetries(serverTick);
+        Minecraft minecraft = Minecraft.getInstance();
+        ClientPacketListener connection = minecraft.getConnection();
+        if (minecraft.player == null || connection == null) {
+            return;
+        }
 
-        ForgeChatBroadcaster broadcaster = new ForgeChatBroadcaster(server);
+        clientTick++;
+        oscService.releaseReadyRetries(clientTick);
+
+        ForgeChatBroadcaster broadcaster = new ForgeChatBroadcaster(connection);
         int dispatched = 0;
         while (dispatched < oscService.settings().maxDispatchPerTick()) {
             ChatEvent chatEvent = oscService.pollChatEvent();
@@ -73,9 +76,9 @@ public final class ForgeAdapter {
 
             try {
                 broadcaster.broadcast(oscService.settings().chatPrefix() + chatEvent.content());
-                logger.info("聊天消息已注入 Minecraft: id={}, source={}", chatEvent.id(), chatEvent.sourceAddress());
+                logger.info("聊天消息已通过本地玩家发送: id={}, source={}", chatEvent.id(), chatEvent.sourceAddress());
             } catch (RuntimeException exception) {
-                oscService.scheduleRetry(chatEvent, serverTick, exception);
+                oscService.scheduleRetry(chatEvent, clientTick, exception);
             }
             dispatched++;
         }
@@ -83,7 +86,7 @@ public final class ForgeAdapter {
 
     private void startService() {
         stopService();
-        serverTick = 0L;
+        clientTick = 0L;
         oscService = new MinecraftOscService(configManager, logger);
         try {
             oscService.start();

@@ -70,19 +70,40 @@ public final class MinecraftOscForgeConfig {
             .defineInRange("maxDispatchPerTick", 8, 1, 256);
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
+    private static final MinecraftOscSettings DEFAULT_SETTINGS = createSettings(
+            9000,
+            DEFAULT_OSC_ADDRESSES,
+            false,
+            DEFAULT_ALLOWED_SENDERS,
+            "[VRChat] ",
+            256,
+            200,
+            2,
+            20,
+            8,
+            5,
+            8
+    );
 
     private MinecraftOscForgeConfig() {
+    }
+
+    /**
+     * 读取配置加载前可用的默认快照
+     */
+    public static MinecraftOscSettings defaults() {
+        return DEFAULT_SETTINGS;
     }
 
     /**
      * 构建核心层配置快照
      */
     public static MinecraftOscSettings snapshot() {
-        return new MinecraftOscSettings(
+        return createSettings(
                 LISTEN_PORT.get(),
-                normalizeSet(ACCEPTED_OSC_ADDRESSES.get()),
+                ACCEPTED_OSC_ADDRESSES.get(),
                 ALLOW_ANY_SENDER.get(),
-                normalizeSet(ALLOWED_SENDERS.get()),
+                ALLOWED_SENDERS.get(),
                 CHAT_PREFIX.get(),
                 MAX_MESSAGE_LENGTH.get(),
                 MAX_QUEUE_SIZE.get(),
@@ -99,6 +120,36 @@ public final class MinecraftOscForgeConfig {
         if (event.getConfig().getSpec() == SPEC) {
             MinecraftOscMod.LOGGER.info("MinecraftOSC 配置已加载: 端口={}, 队列容量={}", LISTEN_PORT.get(), MAX_QUEUE_SIZE.get());
         }
+    }
+
+    private static MinecraftOscSettings createSettings(
+            int listenPort,
+            List<? extends String> acceptedOscAddresses,
+            boolean allowAnySender,
+            List<? extends String> allowedSenders,
+            String chatPrefix,
+            int maxMessageLength,
+            int maxQueueSize,
+            int maxRetries,
+            int retryDelayTicks,
+            int rateLimitMessages,
+            int rateLimitWindowSeconds,
+            int maxDispatchPerTick
+    ) {
+        return new MinecraftOscSettings(
+                listenPort,
+                normalizeSet(acceptedOscAddresses),
+                allowAnySender,
+                normalizeSet(allowedSenders),
+                chatPrefix,
+                maxMessageLength,
+                maxQueueSize,
+                maxRetries,
+                retryDelayTicks,
+                rateLimitMessages,
+                rateLimitWindowSeconds,
+                maxDispatchPerTick
+        );
     }
 
     private static boolean validateNonBlank(Object value) {
