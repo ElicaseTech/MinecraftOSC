@@ -1,0 +1,37 @@
+src/main/java/tech/elicase/minecraftosc/platform/forge/ForgeChatBroadcaster.java
+  s_1d079aba426f0f::t_0b374d412188c7 3,6-7,9,13,15-16,21
+src/main/java/tech/elicase/minecraftosc/platform/forge/ForgeAdapter.java
+  s_1d079aba426f0f::t_9d1ce7ab8e1364 3-5,18,24,45,50,55-56,60-67,69,79,81,89
+src/main/java/tech/elicase/minecraftosc/platform/forge/ReloadableAdapter.java
+  s_1d079aba426f0f::t_be8af154578626 1-9
+src/main/java/tech/elicase/minecraftosc/MinecraftOscMod.java
+  s_1d079aba426f0f::t_ba20c1ec2aafac 5,10,13,25,29,40-49
+  s_1d079aba426f0f::t_6ff89405ca3b22 50-59
+  s_1d079aba426f0f::t_e5e5492375440f 28
+src/main/java/tech/elicase/minecraftosc/MinecraftOscForgeConfig.java
+  s_1d079aba426f0f::t_0fe49a189a9844 78
+  s_1d079aba426f0f::t_482c922fe487f8 85,137,151
+  s_1d079aba426f0f::t_0b42acb3617f3b 73-77,79-84,86,91-97,102,104,106,125-136,138-150,152-153
+  s_1d079aba426f0f::t_031830bbcca37f 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "cb389fdd1a5b5e54054da6acc29cf54ee0da8506",
+  "prompts": {},
+  "humans": {
+    "h_8e6780fc7b4bb1": {
+      "author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  },
+  "sessions": {
+    "s_1d079aba426f0f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f178c-0195-7071-a87f-46e6ecdc9e04",
+        "model": "gpt-5.4"
+      },
+      "human_author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  }
+}
