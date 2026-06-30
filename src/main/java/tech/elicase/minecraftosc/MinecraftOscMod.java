@@ -48,12 +48,10 @@ public final class MinecraftOscMod {
         }
 
         try {
-            Class<?> adapterClass = Class.forName("tech.elicase.minecraftosc.platform.forge.ForgeAdapter");
-            ReloadableAdapter adapter = (ReloadableAdapter) adapterClass
-                    .getConstructor(ConfigManager.class, Logger.class)
-                    .newInstance(configManager, LOGGER);
-            MinecraftForge.EVENT_BUS.register(adapter);
-            return adapter;
+            Class<?> bootstrapClass = Class.forName("tech.elicase.minecraftosc.platform.forge.MinecraftOscClientBootstrap");
+            return (ReloadableAdapter) bootstrapClass
+                    .getMethod("initialize", ConfigManager.class, Logger.class)
+                    .invoke(null, configManager, LOGGER);
         } catch (ReflectiveOperationException exception) {
             throw new IllegalStateException("客户端桥接适配器初始化失败", exception);
         }
