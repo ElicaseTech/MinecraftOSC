@@ -1,0 +1,16 @@
+AGENTS.md
+  h_8e6780fc7b4bb1 1-55
+.gitignore
+  h_8e6780fc7b4bb1 28-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "308571b3f538bbb69500c5817b5808a0c48a470c",
+  "prompts": {},
+  "humans": {
+    "h_8e6780fc7b4bb1": {
+      "author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  }
+}
