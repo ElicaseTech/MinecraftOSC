@@ -1,0 +1,33 @@
+src/test/java/tech/elicase/minecraftosc/core/osc/OscParserTest.java
+  s_e18c8eea91ac6e::t_ffb383108103a2 1-105
+src/test/java/tech/elicase/minecraftosc/core/security/PermissionManagerTest.java
+  s_e18c8eea91ac6e::t_88c0cfa344c252 32
+  s_e18c8eea91ac6e::t_ffb383108103a2 1-31,33-74
+.github/workflows/ci.yml
+  s_e18c8eea91ac6e::t_ffb383108103a2 1-23
+src/test/java/tech/elicase/minecraftosc/core/service/OscMessageHandlerTest.java
+  s_e18c8eea91ac6e::t_ffb383108103a2 1-40
+README.md
+  s_e18c8eea91ac6e::t_ffb383108103a2 2-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "30dee64308a2c98117dc03fa6b59aeaeadcf74e9",
+  "prompts": {},
+  "humans": {
+    "h_8e6780fc7b4bb1": {
+      "author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  },
+  "sessions": {
+    "s_e18c8eea91ac6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1703-8a85-7c40-8ee5-60c26d0b20f5",
+        "model": "gpt-5.4"
+      },
+      "human_author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  }
+}
