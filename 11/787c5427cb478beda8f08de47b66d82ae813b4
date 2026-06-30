@@ -1,0 +1,80 @@
+src/main/resources/META-INF/mods.toml
+  s_e18c8eea91ac6e::t_5dd13fa8540627 1-25
+gradle.properties
+  s_e18c8eea91ac6e::t_9d373a58421742 1-59
+src/main/java/tech/elicase/minecraftosc/core/event/ChatEvent.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-47
+src/main/java/tech/elicase/minecraftosc/core/config/MinecraftOscSettings.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-29
+src/main/java/tech/elicase/minecraftosc/core/osc/OscMessage.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-4,7-14,16-17
+  s_e18c8eea91ac6e::t_88c0cfa344c252 5-6,15
+src/main/java/tech/elicase/minecraftosc/core/osc/OscParseException.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-15
+build.gradle
+  s_e18c8eea91ac6e::t_9d373a58421742 1-154,172-173,187,191,203-204,208-210,214
+  s_e18c8eea91ac6e::t_8ceb61f09a9480 155-157,169-171
+  s_e18c8eea91ac6e::t_5e8db5b4f8fc94 174-176,184-186
+  s_e18c8eea91ac6e::t_e43997c482942e 188-190
+  s_e18c8eea91ac6e::t_a097c2e2dc8b79 192-194,200-202
+  s_e18c8eea91ac6e::t_5b81c552e68bbe 205-207
+  s_e18c8eea91ac6e::t_1c9f8a82d91209 211-213
+  s_e18c8eea91ac6e::t_b1163c58d0d618 158-168,177-183,195-199
+src/main/java/tech/elicase/minecraftosc/core/osc/OscPacket.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-7
+src/main/java/tech/elicase/minecraftosc/core/platform/ChatBroadcaster.java
+  s_e18c8eea91ac6e::t_07cb0d9458d2cc 1-13
+src/main/java/tech/elicase/minecraftosc/core/retry/RetryManager.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-59
+src/main/java/tech/elicase/minecraftosc/core/service/OscMessageHandler.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-62
+src/main/java/tech/elicase/minecraftosc/core/queue/MessageQueue.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-64
+src/main/java/tech/elicase/minecraftosc/core/receiver/OscReceiver.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-90
+settings.gradle
+  s_e18c8eea91ac6e::t_ffb383108103a2 1-15
+src/main/java/tech/elicase/minecraftosc/core/osc/OscParser.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-178
+src/main/java/tech/elicase/minecraftosc/core/osc/OscBundle.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-14
+.gitignore
+  s_e18c8eea91ac6e::t_07cb0d9458d2cc 1-7,9-14,16-18,20-23,26-27
+  s_e18c8eea91ac6e::t_ffb383108103a2 24
+src/main/java/tech/elicase/minecraftosc/MinecraftOscForgeConfig.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-118
+src/main/resources/pack.mcmeta
+  s_e18c8eea91ac6e::t_0a3d723c76b7da 1-8
+src/main/java/tech/elicase/minecraftosc/core/security/PermissionManager.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-70,74-100
+  s_e18c8eea91ac6e::t_88c0cfa344c252 71-73
+src/main/java/tech/elicase/minecraftosc/core/config/ConfigManager.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-30
+src/main/java/tech/elicase/minecraftosc/core/receiver/OscDatagramHandler.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-15
+src/main/java/tech/elicase/minecraftosc/core/service/MinecraftOscService.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-123
+src/main/java/tech/elicase/minecraftosc/core/security/PermissionDecision.java
+  s_e18c8eea91ac6e::t_1c20d2cd52cbd1 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "11787c5427cb478beda8f08de47b66d82ae813b4",
+  "prompts": {},
+  "humans": {
+    "h_8e6780fc7b4bb1": {
+      "author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  },
+  "sessions": {
+    "s_e18c8eea91ac6e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f1703-8a85-7c40-8ee5-60c26d0b20f5",
+        "model": "gpt-5.4"
+      },
+      "human_author": "AuraElicase <auraelicase@outlook.com>"
+    }
+  }
+}
